@@ -1,33 +1,85 @@
-
-/**
- * Beschreiben Sie hier die Klasse Patient.
- * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
- */
+import sas.*;
+import sasio.*;
 public class Patient
 {
-    // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
-    private int x;
-
-    /**
-     * Konstruktor für Objekte der Klasse Patient
-     */
+    String name, description,gender,bloodType;
+    int age;
+    boolean organDonor,DNR;
     public Patient()
     {
-        // Instanzvariable initialisieren
-        x = 0;
+
     }
 
-    /**
-     * Ein Beispiel einer Methode - ersetzen Sie diesen Kommentar mit Ihrem eigenen
-     * 
-     * @param  y    ein Beispielparameter für eine Methode
-     * @return        die Summe aus x und y
-     */
-    public int beispielMethode(int y)
+    public void setName(String n)
     {
-        // tragen Sie hier den Code ein
-        return x + y;
+        name = n;
+    }
+
+    public void setDescription(String n)
+    {
+        description = n;
+    }
+
+    public void setGender(String n)
+    {
+        gender = n;
+    }
+
+    public void setBloodType(String n)
+    {
+        bloodType = n;
+    }
+
+    public void setAge(String n)
+    {
+        age = Integer.valueOf(n);
+    }
+
+    public void setOrganDonor(String n)
+    {
+        if(n == "yes") organDonor =true;
+        else organDonor = false;
+    }
+
+    public void setDNR(String n)
+    {
+        if(n == "yes") DNR =true;
+        else DNR = false;
+    }
+    
+    public String getName()
+    {
+        return(name);
+    }
+
+    public String getDescription()
+    {
+        return(description);
+    }
+
+    public String getGender()
+    {
+        return(gender);
+    }
+
+    public String getBloodType()
+    {
+        return(bloodType);
+    }
+
+    public int getAge()
+    {
+        return(age);
+    }
+
+    public Boolean getOrganDonor()
+    {
+        return(organDonor);
+    }
+
+    public Boolean getDNR()
+    {
+        return(DNR);
     }
 }
+
