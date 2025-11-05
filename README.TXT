@@ -6,9 +6,10 @@ alles, was er/sie wissen muss. Üblicherweise sollte der Kommentar
 zumindest die folgenden Angaben umfassen:
 ------------------------------------------------------------------------
 
-PROJEKTBEZEICHNUNG:
-PROJEKTZWECK:
-VERSION oder DATUM:
-WIE IST DAS PROJEKT ZU STARTEN:
-AUTOR(EN):
+PROJEKTBEZEICHNUNG: Artztpraxis Queue
+PROJEKTZWECK: Auftrag Abgabe Seidel
+VERSION oder DATUM: 05.11.25
+WIE IST DAS PROJEKT ZU STARTEN: GUI.main();
+AUTOR(EN): Raphael Bertges & Maximilian Hauke
 BENUTZERHINWEISE:
+
