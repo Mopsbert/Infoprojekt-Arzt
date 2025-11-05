@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=BeispielGUI
+comment0.text=\r\n\ Diese\ Klasse\ dient\ der\ Darstellung\ einer\ m\u00F6glichen\ GUI\ (Nutzeroberfl\u00E4che)\r\n\ mit\ sasio.\ Es\ werden\ die\ wesentlichen\ Bestandteile\ Label,\ Textfield\ und\r\n\ Button\ beispielhaft\ erstellt\ und\ einige\ Funktionen\ angewendet.\r\n\ Die\ Funktionsweise\ kann\ den\ Kommentaren\ entnommen\ werden\ bzw.\ durch\r\n\ Erstellen\ eines\ Objekts\ von\ BeispielGUI\ und\ Ausf\u00FChren\ der\ Methode\ fuehreAus().\r\n\ \r\n\ @author\ Frau\ Seidl\r\n\ @version\ Oktober\ 2025\r\n
+comment1.params=
+comment1.target=BeispielGUI()
+comment1.text=\r\n\ Konstruktor\:\ das\ Fenster,\ die\ Beschriftungen,\ Textfelder\ und\ Buttons\r\n\ werden\ erstellt\ und\ konfiguriert.\r\n
+comment2.params=
+comment2.target=void\ fuehreAus()
+comment2.text=\r\n\ Hauptmethode\ der\ Klasse\ BeispielGUI\ (fragt\ Buttons\ oder\ andere\r\n\ Interaktion\ mit\ der\ Oberfl\u00E4che\ ab)\r\n
+comment3.params=
+comment3.target=void\ btnSubmitAction()
+comment3.text=\r\n\ Methode,\ die\ ausgef\u00FChrt\ werden\ soll,\ wenn\ der\ Button\ \r\n\ btnSubmit\ gedr\u00FCckt\ wurde.\r\n
+numComments=4
