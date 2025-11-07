@@ -16,9 +16,15 @@ public class GUI
         tfName.setActivated(true);
         tfDescription = new Textfield(300,40,300,30,"Beschreibung Krankheit",window);
         tfGender = new Textfield(640,40,200,30,"Geschlecht(m/w/d)",window);
-        tfAge = new Textfield(900,40,100,30,"Alter",window);
+        tfAge = new Textfield(900,40,200,30,"Alter",window);
         tfOrganDonor = new Textfield(400,100,200,30,"Organspender (j/n)",window);
         tfDnr = new Textfield(640,100,200,30,"CPR/DNR (j/n)",window);
         tfUrgency = new Textfield(900,100,200,30,"Dringlich (j/n)",window);
+        
+        btnSubmit = new Button(900,160,200,30,"Hinzufügen",java.awt.Color.WHITE);
     }
+    static void execute(){
+        GUI app = new GUI();
+    }
+    
 }
