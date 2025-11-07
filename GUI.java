@@ -7,7 +7,7 @@ public class GUI
     private View window;
     private Textfield tfName,tfDescription,tfGender,tfBloodType,tfAge,tfOrganDonor,tfDnr,tfUrgency;
     private Button btnSubmit;
-    
+    private Queue qu, qnu;
     public GUI()
     {
         window = new View(1280,720,"Arzpraxis");
@@ -22,9 +22,14 @@ public class GUI
         tfUrgency = new Textfield(900,100,200,30,"Dringlich (j/n)",window);
         
         btnSubmit = new Button(900,160,200,30,"Hinzufügen",java.awt.Color.WHITE);
+        
+        qu = new Queue();
+        qnu = new Queue();
     }
-    static void execute(){
+    static void main(){
         GUI app = new GUI();
     }
-    
+    void execute(){
+        
+    }
 }
