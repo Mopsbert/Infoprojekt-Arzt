@@ -5,9 +5,9 @@ import java.awt.Color.*;
 public class GUI
 {
     private View window;
-    private Textfield tfName,tfDescription,tfGender,tfBloodType,tfAge,tfOrganDonor,tfDnr,tfUrgency;
+    private Textfield tfName,tfDescription,tfGender,tfBloodType,tfAge,tfOrganDonor,tfDnr,tfHealthInsurance;
     private Button btnSubmit;
-    private Queue queueUrgent, queueNonUrgent;
+    private Queue queuePrivate, queuePublic;
     public GUI()
     {
         window = new View(1280,720,"Arzpraxis");
@@ -19,17 +19,20 @@ public class GUI
         tfAge = new Textfield(900,40,200,30,"Alter",window);
         tfOrganDonor = new Textfield(400,100,200,30,"Organspender (j/n)",window);
         tfDnr = new Textfield(640,100,200,30,"CPR/DNR (j/n)",window);
-        tfUrgency = new Textfield(900,100,200,30,"Dringlich (j/n)",window);
+        tfHealthInsurance = new Textfield(900,100,200,30,"Privat (j/n)",window);
         
         btnSubmit = new Button(900,160,200,30,"Hinzufügen",java.awt.Color.WHITE);
         
-        queueUrgent= new Queue();
-        queueNonUrgent = new Queue();
+        queuePrivate= new Queue();
+        queuePublic = new Queue();
     }
     static void main(){
         GUI app = new GUI();
     }
     void execute(){
+        
+    }
+    void input(){
         
     }
 }
