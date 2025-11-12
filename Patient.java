@@ -36,13 +36,13 @@ public class Patient
 
     public void setOrganDonor(String n)
     {
-        if(n == "yes") organDonor =true;
+        if(n.equals("j")) organDonor =true;
         else organDonor = false;
     }
 
     public void setDNR(String n)
     {
-        if(n == "yes") DNR =true;
+        if(n.equals("j")) DNR =true;
         else DNR = false;
     }
     

@@ -35,11 +35,23 @@ public class GUI
     }
     void execute(){
         if(queuePrivate.isEmpty() == false){
-            System.out.println(queuePrivate.front().getName()+" Private");        
+            System.out.println(queuePrivate.front().getName()+" Private");
+            System.out.println(queuePrivate.front().getDescription());  
+            System.out.println(queuePrivate.front().getGender());  
+            System.out.println(queuePrivate.front().getAge());  
+            System.out.println(queuePrivate.front().getOrganDonor());  
+            System.out.println(queuePrivate.front().getDNR());  
+            queuePrivate.dequeue();
         }
         else{
             if(queuePublic.isEmpty() == false){
                 System.out.println(queuePublic.front().getName()+" Public");
+                System.out.println(queuePublic.front().getDescription());  
+                System.out.println(queuePublic.front().getGender());  
+                System.out.println(queuePublic.front().getAge());  
+                System.out.println(queuePublic.front().getOrganDonor());  
+                System.out.println(queuePublic.front().getDNR());
+                queuePublic.dequeue();
             }
             else{
                 System.out.println("Bisher keiner da.");
