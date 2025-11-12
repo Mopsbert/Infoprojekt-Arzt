@@ -6,7 +6,7 @@ public class GUI
 {
     private View window;
     private Textfield tfName,tfDescription,tfGender,tfBloodType,tfAge,tfOrganDonor,tfDNR,tfHealthInsurance;
-    private Button btnSubmit;
+    private Button btnSubmit, btnNextPatient;
     private Queue<Patient> queuePrivate, queuePublic;
     public GUI()
     {
@@ -20,8 +20,9 @@ public class GUI
         tfDNR = new Textfield(640,100,200,30,"CPR/DNR (j/n)",window);
         tfHealthInsurance = new Textfield(900,100,200,30,"Privat (j/n)",window);
         
-        btnSubmit = new Button(900,160,200,30,"Hinzufügen",java.awt.Color.WHITE);
+        btnSubmit = new Button(900,200,200,30,"Hinzufügen",java.awt.Color.GREEN);
         
+        btnNextPatient = new Button(900,260,200,30,"Aufrufen",java.awt.Color.RED);
         queuePrivate= new Queue<Patient>();
         queuePublic = new Queue<Patient>();
     }
@@ -130,6 +131,8 @@ public class GUI
         }
         if(btnSubmit.clicked()){
             submit();
+        }
+        if(btnNextPatient.clicked()){
             execute();
         }
     }
