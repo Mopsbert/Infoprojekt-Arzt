@@ -35,7 +35,7 @@ public class GUI
     }
     void execute(){
         if(queuePrivate.isEmpty() == false){
-            System.out.println(queuePrivate.front().getName()+" Private");
+            System.out.println(queuePrivate.front().getName()+" (Privatpatient)");
             System.out.println(queuePrivate.front().getDescription());  
             System.out.println(queuePrivate.front().getGender());  
             System.out.println(queuePrivate.front().getAge());  
@@ -45,7 +45,7 @@ public class GUI
         }
         else{
             if(queuePublic.isEmpty() == false){
-                System.out.println(queuePublic.front().getName()+" Public");
+                System.out.println(queuePublic.front().getName()+" (Kassenpatient)");
                 System.out.println(queuePublic.front().getDescription());  
                 System.out.println(queuePublic.front().getGender());  
                 System.out.println(queuePublic.front().getAge());  
