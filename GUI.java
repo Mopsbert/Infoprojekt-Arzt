@@ -5,7 +5,7 @@ import java.awt.Color.*;
 public class GUI
 {
     private View window;
-    private Textfield tfName,tfDescription,tfGender,tfBloodType,tfAge,tfOrganDonor,tfDnr,tfHealthInsurance;
+    private Textfield tfName,tfDescription,tfGender,tfBloodType,tfAge,tfOrganDonor,tfDNR,tfHealthInsurance;
     private Button btnSubmit;
     private Queue queuePrivate, queuePublic;
     public GUI()
@@ -18,7 +18,7 @@ public class GUI
         tfGender = new Textfield(640,40,200,30,"Geschlecht(m/w/d)",window);
         tfAge = new Textfield(900,40,200,30,"Alter",window);
         tfOrganDonor = new Textfield(400,100,200,30,"Organspender (j/n)",window);
-        tfDnr = new Textfield(640,100,200,30,"CPR/DNR (j/n)",window);
+        tfDNR = new Textfield(640,100,200,30,"CPR/DNR (j/n)",window);
         tfHealthInsurance = new Textfield(900,100,200,30,"Privat (j/n)",window);
         
         btnSubmit = new Button(900,160,200,30,"Hinzufügen",java.awt.Color.WHITE);
@@ -34,5 +34,23 @@ public class GUI
     }
     void input(){
         
+    }
+    void submit(){
+        Patient patient;
+        patient = new Patient();
+        patient.setName(tfName.getText());
+        patient.setDescription(tfDescription.getText());
+        patient.setGender(tfGender.getText());
+        patient.setAge(tfAge.getText());
+        patient.setOrganDonor(tfOrganDonor.getText());
+        patient.setDNR(tfDNR.getText());
+        if(tfHealthInsurance.getText()=="j")
+        {
+            queuePrivate.enqueue(patient);
+        }
+        else
+        {
+            queuePublic.enqueue(patient);            
+        }
     }
 }
