@@ -143,6 +143,7 @@ public class GUI
         }
         if(btnSubmit.clicked()){
             submit();
+            disableTextfields();
         }
         if(btnNextPatient.clicked()){
             execute();
