@@ -37,7 +37,7 @@ public class GUI
             System.out.println(queuePrivate.front());        
         }
         else{
-            if(queuePrivate.isEmpty() == false){
+            if(queuePublic.isEmpty() == false){
                 System.out.println(queuePublic.front());
             }
             else{
