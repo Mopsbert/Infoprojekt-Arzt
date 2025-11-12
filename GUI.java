@@ -6,6 +6,7 @@ public class GUI
 {
     private View window;
     private Textfield tfName,tfDescription,tfGender,tfBloodType,tfAge,tfOrganDonor,tfDNR,tfHealthInsurance;
+    private Text tlbName,tlbDescription,tlbGender,tlbBloodType,tlbAge,tlbOrganDonor,tlbDNR,tlbHealthInsurance;
     private Button btnSubmit, btnNextPatient;
     private Queue<Patient> queuePrivate, queuePublic;
     public GUI()
@@ -19,6 +20,14 @@ public class GUI
         tfOrganDonor = new Textfield(400,100,200,30,"Organspender (j/n)",window);
         tfDNR = new Textfield(640,100,200,30,"CPR/DNR (j/n)",window);
         tfHealthInsurance = new Textfield(900,100,200,30,"Privat (j/n)",window);
+        
+        tlbName = new Text(60,70,"Name",java.awt.Color.GRAY);       
+        tlbDescription = new Text(300,70,"Beschreibung Krankheit",java.awt.Color.GRAY);
+        tlbGender = new Text(640,70,"Geschlecht(m/w/d)",java.awt.Color.GRAY);
+        tlbAge = new Text(900,70,"Alter",java.awt.Color.GRAY);
+        tlbOrganDonor = new Text(400,130,"Organspender (j/n)",java.awt.Color.GRAY);
+        tlbDNR = new Text(640,130,"CPR/DNR (j/n)",java.awt.Color.GRAY);
+        tlbHealthInsurance = new Text(900,130,"Privat (j/n)",java.awt.Color.GRAY);
         
         btnSubmit = new Button(900,200,200,30,"Hinzufügen",java.awt.Color.GREEN);
         
