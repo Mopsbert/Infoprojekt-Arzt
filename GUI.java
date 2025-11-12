@@ -33,7 +33,17 @@ public class GUI
         }
     }
     void execute(){
-        System.out.println(queuePrivate.front());
+        if(queuePrivate.isEmpty() == false){
+            System.out.println(queuePrivate.front());        
+        }
+        else{
+            if(queuePrivate.isEmpty() == false){
+                System.out.println(queuePublic.front());
+            }
+            else{
+                System.out.println("Bisher keiner da.");
+            }
+        }
     }
     void input(){
         if(tfName.clicked())
