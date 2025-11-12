@@ -33,7 +33,17 @@ public class GUI
         }
     }
     void execute(){
-        System.out.println(queuePublic.front());
+        if(queuePrivate.isEmpty() == false){
+            System.out.println(queuePrivate.front().getName()+" Private");        
+        }
+        else{
+            if(queuePublic.isEmpty() == false){
+                System.out.println(queuePublic.front().getName()+" Public");
+            }
+            else{
+                System.out.println("Bisher keiner da.");
+            }
+        }
     }
     void input(){
         if(tfName.clicked())
@@ -141,7 +151,7 @@ public class GUI
         patient.setAge(tfAge.getText());
         patient.setOrganDonor(tfOrganDonor.getText());
         patient.setDNR(tfDNR.getText());
-        if(tfHealthInsurance.getText()=="j")
+        if(tfHealthInsurance.getText().equals("j"))
         {
             queuePrivate.enqueue(patient);
         }
