@@ -2,8 +2,7 @@ import sas.*;
 import sasio.*;
 public class Patient
 {
-    String name, description,gender,bloodType;
-    int age;
+    String name, description,gender,bloodType,age;
     boolean organDonor,DNR;
     public Patient()
     {
@@ -32,7 +31,7 @@ public class Patient
 
     public void setAge(String n)
     {
-        age = Integer.valueOf(n);
+        age = n;
     }
 
     public void setOrganDonor(String n)
@@ -67,7 +66,7 @@ public class Patient
         return(bloodType);
     }
 
-    public int getAge()
+    public String getAge()
     {
         return(age);
     }
