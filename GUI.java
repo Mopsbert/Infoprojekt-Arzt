@@ -33,7 +33,7 @@ public class GUI
         }
     }
     void execute(){
-        
+        System.out.println(queuePrivate.front());
     }
     void input(){
         if(tfName.clicked())
