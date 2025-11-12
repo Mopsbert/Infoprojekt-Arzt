@@ -7,7 +7,7 @@ public class GUI
     private View window;
     private Textfield tfName,tfDescription,tfGender,tfBloodType,tfAge,tfOrganDonor,tfDNR,tfHealthInsurance;
     private Button btnSubmit;
-    private Queue queuePrivate, queuePublic;
+    private Queue<Patient> queuePrivate, queuePublic;
     public GUI()
     {
         window = new View(1280,720,"Arzpraxis");
@@ -22,8 +22,8 @@ public class GUI
         
         btnSubmit = new Button(900,160,200,30,"Hinzufügen",java.awt.Color.WHITE);
         
-        queuePrivate= new Queue();
-        queuePublic = new Queue();
+        queuePrivate= new Queue<Patient>();
+        queuePublic = new Queue<Patient>();
     }
     static void main(){
         GUI app = new GUI();
@@ -33,7 +33,7 @@ public class GUI
         }
     }
     void execute(){
-        System.out.println(queuePrivate.front());
+        System.out.println(queuePublic.front());
     }
     void input(){
         if(tfName.clicked())
@@ -120,6 +120,7 @@ public class GUI
         }
         if(btnSubmit.clicked()){
             submit();
+            execute();
         }
     }
     private void disableTextfields(){
