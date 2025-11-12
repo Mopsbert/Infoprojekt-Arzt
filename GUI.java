@@ -27,6 +27,10 @@ public class GUI
     }
     static void main(){
         GUI app = new GUI();
+        while(true){
+            app.input();
+            app.window.wait(1);
+        }
     }
     void execute(){
         
@@ -113,6 +117,9 @@ public class GUI
         if(tfDNR.enterPressed())
         {
             tfHealthInsurance.setActivated(false);
+        }
+        if(btnSubmit.clicked()){
+            submit();
         }
     }
     private void disableTextfields(){
