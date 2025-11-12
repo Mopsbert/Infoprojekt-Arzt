@@ -143,7 +143,7 @@ public class GUI
         }
         if(btnSubmit.clicked()){
             submit();
-            disableTextfields();
+            deleteText();
         }
         if(btnNextPatient.clicked()){
             execute();
@@ -157,6 +157,15 @@ public class GUI
         tfOrganDonor.setActivated(false);
         tfDNR.setActivated(false);
         tfHealthInsurance.setActivated(false);
+    }
+    private void deleteText(){
+        tfName.deleteText();
+        tfDescription.deleteText();
+        tfGender.deleteText();
+        tfAge.deleteText();
+        tfOrganDonor.deleteText();
+        tfDNR.deleteText();
+        tfHealthInsurance.deleteText();
     }
     void submit(){
         Patient patient;
