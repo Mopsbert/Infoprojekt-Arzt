@@ -124,4 +124,22 @@ public class GUI
         tfDNR.setActivated(false);
         tfHealthInsurance.setActivated(false);
     }
+    void submit(){
+        Patient patient;
+        patient = new Patient();
+        patient.setName(tfName.getText());
+        patient.setDescription(tfDescription.getText());
+        patient.setGender(tfGender.getText());
+        patient.setAge(tfAge.getText());
+        patient.setOrganDonor(tfOrganDonor.getText());
+        patient.setDNR(tfDNR.getText());
+        if(tfHealthInsurance.getText()=="j")
+        {
+            queuePrivate.enqueue(patient);
+        }
+        else
+        {
+            queuePublic.enqueue(patient);            
+        }
+    }
 }
