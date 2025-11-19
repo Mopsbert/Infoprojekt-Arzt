@@ -8,6 +8,8 @@ public class GUI
     private Textfield tfName,tfDescription,tfGender,tfBloodType,tfAge,tfOrganDonor,tfDNR,tfHealthInsurance;
     private Text tlbName,tlbDescription,tlbGender,tlbBloodType,tlbAge,tlbOrganDonor,tlbDNR,tlbHealthInsurance;
     private Button btnSubmit, btnNextPatient, btnPrivate;
+    private Text tlbOutName,tlbOutDescription,tlbOutGender,tlbOutBloodType,tlbOutAge,tlbOutOrganDonor,tlbOutDNR,tlbOutHealthInsurance;
+    private Text tOutName,tOutDescription,tOutGender,tOutBloodType,tOutAge,tOutOrganDonor,tOutDNR,tOutHealthInsurance;
     private Queue<Patient> queuePrivate, queuePublic;
     private Boolean goodHuman = false;
     public GUI()
@@ -32,8 +34,38 @@ public class GUI
         btnPrivate = new Button(900,130,80,30,"Privat?",java.awt.Color.WHITE);
         
         btnSubmit = new Button(900,200,200,30,"Hinzufügen",java.awt.Color.GREEN);
+        btnNextPatient = new Button(60,420,250,30,"Nächsten Patient anzeigen",java.awt.Color.RED);
         
-        btnNextPatient = new Button(900,260,200,30,"Aufrufen",java.awt.Color.RED);
+        tlbOutName = new Text(60,470,"Name:",java.awt.Color.GRAY);
+        tlbOutName.setHidden(true);
+        tlbOutDescription = new Text(300,470,"Beschreibung Krankheit:",java.awt.Color.GRAY);
+        tlbOutDescription.setHidden(true);
+        tlbOutGender = new Text(640,470,"Geschlecht:",java.awt.Color.GRAY);
+        tlbOutGender.setHidden(true);
+        tlbOutAge = new Text(900,470,"Alter:",java.awt.Color.GRAY);
+        tlbOutAge.setHidden(true);
+        tlbOutOrganDonor = new Text(400,530,"Organspender:",java.awt.Color.GRAY);
+        tlbOutOrganDonor.setHidden(true);
+        tlbOutDNR = new Text(640,530,"CPR/DNR:",java.awt.Color.GRAY);
+        tlbOutDNR.setHidden(true);
+        tlbOutHealthInsurance = new Text(900,530,"Privatversichert:",java.awt.Color.GRAY);
+        tlbOutHealthInsurance.setHidden(true);
+        
+        tOutName = new Text(60,500,"-",java.awt.Color.GRAY);
+        tOutName.setHidden(true);
+        tOutDescription = new Text(300,500,"-",java.awt.Color.GRAY);
+        tOutDescription.setHidden(true);
+        tOutGender = new Text(640,500,"-",java.awt.Color.GRAY);
+        tOutGender.setHidden(true);
+        tOutAge = new Text(900,500,"-",java.awt.Color.GRAY);
+        tOutAge.setHidden(true);
+        tOutOrganDonor = new Text(400,560,"-",java.awt.Color.GRAY);
+        tOutOrganDonor.setHidden(true);
+        tOutDNR = new Text(640,560,"-",java.awt.Color.GRAY);
+        tOutDNR.setHidden(true);
+        tOutHealthInsurance = new Text(900,560,"-",java.awt.Color.GRAY);
+        tOutHealthInsurance.setHidden(true);
+        
         queuePrivate= new Queue<Patient>();
         queuePublic = new Queue<Patient>();
     }
@@ -46,26 +78,58 @@ public class GUI
     }
     void execute(){
         if(queuePrivate.isEmpty() == false){
-            System.out.println(queuePrivate.front().getName()+" (Privatpatient)");
-            System.out.println(queuePrivate.front().getDescription());  
-            System.out.println(queuePrivate.front().getGender());  
-            System.out.println(queuePrivate.front().getAge());  
-            System.out.println(queuePrivate.front().getOrganDonor());  
-            System.out.println(queuePrivate.front().getDNR());  
+            tOutName.setText(queuePrivate.front().getName());
+            tOutDescription.setText(queuePrivate.front().getDescription());  
+            tOutGender.setText(queuePrivate.front().getGender());  
+            tOutAge.setText(queuePrivate.front().getAge());
+            tOutHealthInsurance.setText("Privatversichert");
+            if(queuePrivate.front().getOrganDonor())
+            {
+                tOutOrganDonor.setText("Ja");  
+            }
+            else
+            {
+                tOutOrganDonor.setText("Nein");  
+            }
+            if(queuePrivate.front().getDNR())
+            {
+                tOutDNR.setText("Ja");  
+            }
+            else
+            {
+                tOutDNR.setText("Nein");  
+            }
             queuePrivate.dequeue();
+            unhideText();
         }
         else{
             if(queuePublic.isEmpty() == false){
-                System.out.println(queuePublic.front().getName()+" (Kassenpatient)");
-                System.out.println(queuePublic.front().getDescription());  
-                System.out.println(queuePublic.front().getGender());  
-                System.out.println(queuePublic.front().getAge());  
-                System.out.println(queuePublic.front().getOrganDonor());  
-                System.out.println(queuePublic.front().getDNR());
+                tOutName.setText(queuePublic.front().getName());
+                tOutDescription.setText(queuePublic.front().getDescription());  
+                tOutGender.setText(queuePublic.front().getGender());  
+                tOutAge.setText(queuePublic.front().getAge());
+                tOutHealthInsurance.setText("Kassenpatient");
+                if(queuePublic.front().getOrganDonor())
+                {
+                    tOutOrganDonor.setText("Ja");  
+                }
+                else
+                {
+                    tOutOrganDonor.setText("Nein");  
+                }
+                if(queuePublic.front().getDNR())
+                {
+                    tOutDNR.setText("Ja");  
+                }
+                else
+                {
+                    tOutDNR.setText("Nein");  
+                }
                 queuePublic.dequeue();
+                unhideText();
             }
             else{
-                System.out.println("Bisher keiner da.");
+                hideText();
             }
         }
     }
@@ -165,6 +229,40 @@ public class GUI
         if(btnNextPatient.clicked()){
             execute();
         }
+    }
+    private void unhideText(){
+        tlbOutName.setHidden(false);
+        tlbOutDescription.setHidden(false);
+        tlbOutGender.setHidden(false);
+        tlbOutAge.setHidden(false);
+        tlbOutOrganDonor.setHidden(false);
+        tlbOutDNR.setHidden(false);
+        tlbOutHealthInsurance.setHidden(false);
+        
+        tOutName.setHidden(false);
+        tOutDescription.setHidden(false);
+        tOutGender.setHidden(false);
+        tOutAge.setHidden(false);
+        tOutOrganDonor.setHidden(false);
+        tOutDNR.setHidden(false);
+        tOutHealthInsurance.setHidden(false);
+    }
+    private void hideText(){
+        tlbOutName.setHidden(true);
+        tlbOutDescription.setHidden(true);
+        tlbOutGender.setHidden(true);
+        tlbOutAge.setHidden(true);
+        tlbOutOrganDonor.setHidden(true);
+        tlbOutDNR.setHidden(true);
+        tlbOutHealthInsurance.setHidden(true);
+        
+        tOutName.setHidden(true);
+        tOutDescription.setHidden(true);
+        tOutGender.setHidden(true);
+        tOutAge.setHidden(true);
+        tOutOrganDonor.setHidden(true);
+        tOutDNR.setHidden(true);
+        tOutHealthInsurance.setHidden(true);
     }
     private void disableTextfields(){
         tfName.setActivated(false);
