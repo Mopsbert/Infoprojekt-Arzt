@@ -10,10 +10,11 @@ public class GUI
     private View window;
     private Textfield tfName,tfDescription,tfGender,tfBloodType,tfAge,tfOrganDonor,tfDNR,tfHealthInsurance; //dies sind die Inputfelder
     private Text tlbName,tlbDescription,tlbGender,tlbBloodType,tlbAge,tlbOrganDonor,tlbDNR,tlbHealthInsurance; //dies sind die Bezeichnungnen unter den Inputfeldern
-    private Button btnSubmit, btnNextPatient; //dies sind alle Buttons für die Bedienung
+    private Button btnSubmit, btnNextPatient, btnPrivateN, btnPrivateT, btnPrivateF; //dies sind alle Buttons für die Bedienung
     private Text tlbOutName,tlbOutDescription,tlbOutGender,tlbOutBloodType,tlbOutAge,tlbOutOrganDonor,tlbOutDNR,tlbOutHealthInsurance; //dies sind die Bezeichnungen über den Outputfeldern
     private Text tOutName,tOutDescription,tOutGender,tOutBloodType,tOutAge,tOutOrganDonor,tOutDNR,tOutHealthInsurance; //dies sind die Outputfelder
     private Queue<Patient> queuePrivate, queuePublic; //die beiden Queues werden erstellt, eine für privatpatienten ein für kassenpatienten
+    private Boolean privateInsurance = false;
     public GUI()
     {
         window = new View(1280,720,"Arzpraxis");
@@ -24,7 +25,6 @@ public class GUI
         tfAge = new Textfield(900,40,200,30,"Alter",window);
         tfOrganDonor = new Textfield(400,100,200,30,"Organspender (j/n)",window);
         tfDNR = new Textfield(640,100,200,30,"CPR/DNR (j/n)",window);
-        tfHealthInsurance = new Textfield(900,100,200,30,"Privat (j/n)",window);
         
         tlbName = new Text(60,70,"Name",java.awt.Color.GRAY);       
         tlbDescription = new Text(300,70,"Beschreibung Krankheit",java.awt.Color.GRAY);
@@ -32,7 +32,12 @@ public class GUI
         tlbAge = new Text(900,70,"Alter",java.awt.Color.GRAY);
         tlbOrganDonor = new Text(400,130,"Organspender (j/n)",java.awt.Color.GRAY);
         tlbDNR = new Text(640,130,"CPR/DNR (j/n)",java.awt.Color.GRAY);
-        tlbHealthInsurance = new Text(900,130,"Privat (j/n)",java.awt.Color.GRAY);
+        
+        btnPrivateN = new Button(900,100,80,30,"Privat ?",java.awt.Color.WHITE);
+        btnPrivateT = new Button(900,100,80,30,"Privat J",java.awt.Color.GREEN);
+        btnPrivateF = new Button(900,100,80,30,"Privat X",java.awt.Color.RED);
+        btnPrivateT.setHidden(true);
+        btnPrivateF.setHidden(true);
         
         btnSubmit = new Button(900,200,200,30,"Hinzufügen",java.awt.Color.GREEN);
         btnNextPatient = new Button(60,420,250,30,"Nächsten Patient anzeigen",java.awt.Color.RED);
@@ -45,26 +50,26 @@ public class GUI
         tlbOutGender.setHidden(true);
         tlbOutAge = new Text(900,470,"Alter:",java.awt.Color.GRAY);
         tlbOutAge.setHidden(true);
-        tlbOutOrganDonor = new Text(400,530,"Organspender:",java.awt.Color.GRAY);
+        tlbOutOrganDonor = new Text(300,530,"Organspender:",java.awt.Color.GRAY);
         tlbOutOrganDonor.setHidden(true);
         tlbOutDNR = new Text(640,530,"CPR/DNR:",java.awt.Color.GRAY);
         tlbOutDNR.setHidden(true);
         tlbOutHealthInsurance = new Text(900,530,"Privatversichert:",java.awt.Color.GRAY);
         tlbOutHealthInsurance.setHidden(true);
         
-        tOutName = new Text(60,500,"-",java.awt.Color.GRAY);
+        tOutName = new Text(60,500,"-",java.awt.Color.WHITE);
         tOutName.setHidden(true);
-        tOutDescription = new Text(300,500,"-",java.awt.Color.GRAY);
+        tOutDescription = new Text(300,500,"-",java.awt.Color.WHITE);
         tOutDescription.setHidden(true);
-        tOutGender = new Text(640,500,"-",java.awt.Color.GRAY);
+        tOutGender = new Text(640,500,"-",java.awt.Color.WHITE);
         tOutGender.setHidden(true);
-        tOutAge = new Text(900,500,"-",java.awt.Color.GRAY);
+        tOutAge = new Text(900,500,"-",java.awt.Color.WHITE);
         tOutAge.setHidden(true);
-        tOutOrganDonor = new Text(400,560,"-",java.awt.Color.GRAY);
+        tOutOrganDonor = new Text(300,560,"-",java.awt.Color.WHITE);
         tOutOrganDonor.setHidden(true);
-        tOutDNR = new Text(640,560,"-",java.awt.Color.GRAY);
+        tOutDNR = new Text(640,560,"-",java.awt.Color.WHITE);
         tOutDNR.setHidden(true);
-        tOutHealthInsurance = new Text(900,560,"-",java.awt.Color.GRAY);
+        tOutHealthInsurance = new Text(900,560,"-",java.awt.Color.WHITE);
         tOutHealthInsurance.setHidden(true);
         
         queuePrivate= new Queue<Patient>();
@@ -207,19 +212,34 @@ public class GUI
             tfHealthInsurance.setActivated(true);
             tfHealthInsurance.deleteText();
         }
-        if(tfHealthInsurance.clicked())
-        {
-            tfHealthInsurance.deleteText();
-            disableTextfields();
-            tfHealthInsurance.setActivated(true);
-        }
         if(tfDNR.enterPressed())
         {
             tfHealthInsurance.setActivated(false);
         }
+        if(btnPrivateN.clicked())
+        {
+            privateInsurance = true;
+            btnPrivateN.setHidden(true);
+            btnPrivateT.setHidden(false);
+            btnPrivateF.setHidden(true);
+        }
+        if(btnPrivateT.clicked())
+        {
+            privateInsurance = false;
+            btnPrivateT.setHidden(true);
+            btnPrivateF.setHidden(false);
+        }
+        if(btnPrivateF.clicked()){
+            privateInsurance = true;
+            btnPrivateT.setHidden(false);
+            btnPrivateF.setHidden(true);
+        }
         if(btnSubmit.clicked()){
             submit();
             deleteText();
+            btnPrivateN.setHidden(false);
+            btnPrivateT.setHidden(true);
+            btnPrivateF.setHidden(true);
         }
         if(btnNextPatient.clicked()){
             execute();
@@ -266,7 +286,6 @@ public class GUI
         tfAge.setActivated(false);
         tfOrganDonor.setActivated(false);
         tfDNR.setActivated(false);
-        tfHealthInsurance.setActivated(false);
     }
     private void deleteText(){
         tfName.deleteText();
@@ -275,7 +294,6 @@ public class GUI
         tfAge.deleteText();
         tfOrganDonor.deleteText();
         tfDNR.deleteText();
-        tfHealthInsurance.deleteText();
     }
     void submit(){
         Patient patient;
@@ -286,9 +304,10 @@ public class GUI
         patient.setAge(tfAge.getText());
         patient.setOrganDonor(tfOrganDonor.getText());
         patient.setDNR(tfDNR.getText());
-        if(tfHealthInsurance.getText().equals("j"))
+        if(privateInsurance)
         {
             queuePrivate.enqueue(patient);
+            privateInsurance = false;
         }
         else
         {
