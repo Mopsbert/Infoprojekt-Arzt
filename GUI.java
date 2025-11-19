@@ -7,8 +7,9 @@ public class GUI
     private View window;
     private Textfield tfName,tfDescription,tfGender,tfBloodType,tfAge,tfOrganDonor,tfDNR,tfHealthInsurance;
     private Text tlbName,tlbDescription,tlbGender,tlbBloodType,tlbAge,tlbOrganDonor,tlbDNR,tlbHealthInsurance;
-    private Button btnSubmit, btnNextPatient;
+    private Button btnSubmit, btnNextPatient, btnPrivate;
     private Queue<Patient> queuePrivate, queuePublic;
+    private Boolean goodHuman = false;
     public GUI()
     {
         window = new View(1280,720,"Arzpraxis");
@@ -19,7 +20,6 @@ public class GUI
         tfAge = new Textfield(900,40,200,30,"Alter",window);
         tfOrganDonor = new Textfield(400,100,200,30,"Organspender (j/n)",window);
         tfDNR = new Textfield(640,100,200,30,"CPR/DNR (j/n)",window);
-        tfHealthInsurance = new Textfield(900,100,200,30,"Privat (j/n)",window);
         
         tlbName = new Text(60,70,"Name",java.awt.Color.GRAY);       
         tlbDescription = new Text(300,70,"Beschreibung Krankheit",java.awt.Color.GRAY);
@@ -27,7 +27,9 @@ public class GUI
         tlbAge = new Text(900,70,"Alter",java.awt.Color.GRAY);
         tlbOrganDonor = new Text(400,130,"Organspender (j/n)",java.awt.Color.GRAY);
         tlbDNR = new Text(640,130,"CPR/DNR (j/n)",java.awt.Color.GRAY);
-        tlbHealthInsurance = new Text(900,130,"Privat (j/n)",java.awt.Color.GRAY);
+        tlbHealthInsurance = new Text(100,600,"Privat",java.awt.Color.WHITE);
+        
+        btnPrivate = new Button(900,130,80,30,"Privat?",java.awt.Color.WHITE);
         
         btnSubmit = new Button(900,200,200,30,"Hinzufügen",java.awt.Color.GREEN);
         
@@ -140,15 +142,21 @@ public class GUI
             tfHealthInsurance.setActivated(true);
             tfHealthInsurance.deleteText();
         }
-        if(tfHealthInsurance.clicked())
-        {
-            tfHealthInsurance.deleteText();
-            disableTextfields();
-            tfHealthInsurance.setActivated(true);
-        }
         if(tfDNR.enterPressed())
         {
             tfHealthInsurance.setActivated(false);
+        }
+        if(btnPrivate.clicked()){
+            if(goodHuman){
+                goodHuman = false;
+                tlbHealthInsurance.setColor(java.awt.Color.BLACK);
+                System.out.println("1");
+            }
+            else if(!goodHuman){
+                goodHuman = true;
+                tlbHealthInsurance.setColor(java.awt.Color.WHITE);
+                System.out.println("0");
+            }
         }
         if(btnSubmit.clicked()){
             submit();
@@ -174,7 +182,6 @@ public class GUI
         tfAge.deleteText();
         tfOrganDonor.deleteText();
         tfDNR.deleteText();
-        tfHealthInsurance.deleteText();
     }
     void submit(){
         Patient patient;
@@ -185,9 +192,10 @@ public class GUI
         patient.setAge(tfAge.getText());
         patient.setOrganDonor(tfOrganDonor.getText());
         patient.setDNR(tfDNR.getText());
-        if(tfHealthInsurance.getText().equals("j"))
+        if(goodHuman)
         {
             queuePrivate.enqueue(patient);
+            goodHuman = false;
         }
         else
         {
