@@ -1,5 +1,9 @@
 import sas.*;
 import sasio.*;
+/*
+ * In dieser Klasse wird die Struktur des Patienten festgelegt. 
+ * Und passende "set- und get-Methoden" für diese erstellt.
+ */
 public class Patient
 {
     String name, description,gender,bloodType,age;

@@ -2,16 +2,18 @@ import sas.*;
 import sasio.*;
 import java.awt.Color;
 import java.awt.Color.*;
+/*
+ * In dieser Klasse ist die gesamte Steurung und Benutzeroberfläche.
+ */
 public class GUI
 {
     private View window;
-    private Textfield tfName,tfDescription,tfGender,tfBloodType,tfAge,tfOrganDonor,tfDNR,tfHealthInsurance;
-    private Text tlbName,tlbDescription,tlbGender,tlbBloodType,tlbAge,tlbOrganDonor,tlbDNR,tlbHealthInsurance;
-    private Button btnSubmit, btnNextPatient;
-    private Text tlbOutName,tlbOutDescription,tlbOutGender,tlbOutBloodType,tlbOutAge,tlbOutOrganDonor,tlbOutDNR,tlbOutHealthInsurance;
-    private Text tOutName,tOutDescription,tOutGender,tOutBloodType,tOutAge,tOutOrganDonor,tOutDNR,tOutHealthInsurance;
-    private Button btnOutNextPatient;
-    private Queue<Patient> queuePrivate, queuePublic;
+    private Textfield tfName,tfDescription,tfGender,tfBloodType,tfAge,tfOrganDonor,tfDNR,tfHealthInsurance; //dies sind die Inputfelder
+    private Text tlbName,tlbDescription,tlbGender,tlbBloodType,tlbAge,tlbOrganDonor,tlbDNR,tlbHealthInsurance; //dies sind die Bezeichnungnen unter den Inputfeldern
+    private Button btnSubmit, btnNextPatient; //dies sind alle Buttons für die Bedienung
+    private Text tlbOutName,tlbOutDescription,tlbOutGender,tlbOutBloodType,tlbOutAge,tlbOutOrganDonor,tlbOutDNR,tlbOutHealthInsurance; //dies sind die Bezeichnungen über den Outputfeldern
+    private Text tOutName,tOutDescription,tOutGender,tOutBloodType,tOutAge,tOutOrganDonor,tOutDNR,tOutHealthInsurance; //dies sind die Outputfelder
+    private Queue<Patient> queuePrivate, queuePublic; //die beiden Queues werden erstellt, eine für privatpatienten ein für kassenpatienten
     public GUI()
     {
         window = new View(1280,720,"Arzpraxis");
